@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,20 +11,28 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (_attackTimeout > 0f) _attackTimeout = Mathf.Clamp(_attackTimeout - Time.deltaTime,0, _attackMaxTimeout);
-    }
 
-    private void OnTriggerStay (Collider other)
-    {
-        if (other.TryGetComponent<ItemSourceView>(out ItemSourceView source))
+        if (_attackTimeout == 0f)
         {
-            if (_attackTimeout == 0f)
+            Collider[] _hitColliders = Physics.OverlapSphere(transform.position + transform.forward, 2f);
+            foreach (Collider hit in _hitColliders)
             {
-                int damage = 3;
-                damage = source.GetDamage(damage, transform);
-                _attackTimeout = _attackMaxTimeout;
-                
-                _inventory.ChangeItemAmount(source.Resource.type , damage);
+                if (hit.TryGetComponent(out ItemSourceView source))
+                {
+                    int damage = 1;
+                    damage = source.GetDamage(damage, transform);
+                    _attackTimeout = _attackMaxTimeout;
+
+                    _inventory.ChangeItemAmount(source.Resource.type, damage);
+                }
             }
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + transform.forward, 2f);
+    }
+
 }
