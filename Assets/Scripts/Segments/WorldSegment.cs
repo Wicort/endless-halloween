@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WorldSegment : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private bool isActive = false;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        if (!isActive)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

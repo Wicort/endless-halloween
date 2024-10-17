@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
         if (_attackTimeout == 0f)
         {
-            Collider[] _hitColliders = Physics.OverlapSphere(transform.position + transform.forward, 2f);
+            Collider[] _hitColliders = Physics.OverlapSphere(transform.position + transform.forward + transform.up, 1f);
             foreach (Collider hit in _hitColliders)
             {
                 if (hit.TryGetComponent(out ItemSourceView source))
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + transform.forward, 2f);
+        Gizmos.DrawWireSphere(transform.position + transform.forward + transform.up, 1f);
     }
 
 }
