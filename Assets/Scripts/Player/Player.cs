@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _attackMaxTimeout = 1f;
     [SerializeField] private Inventory _inventory;
 
+    public Inventory Inventory => _inventory;
+
     private float _attackTimeout;
 
     private void Update()

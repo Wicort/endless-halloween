@@ -12,13 +12,17 @@ public class UnlockPoint : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] List<UnlockSlot> _slots = new();
 
+    [SerializeField] private List<RequireditemView> _requirements = new();
+
     private void Start()
     {
         foreach (UnlockSlot slot in _slots)
         {
             Debug.Log($"{slot._item.name}, {slot.Amount}");
-            var _inventorySlot = Instantiate(_slotPrefab, _container.transform);
-            _inventorySlot.Init(slot._item.icon, slot.Amount);
+            RequireditemView _inventorySlot = Instantiate(_slotPrefab, _container.transform);
+            _inventorySlot.Init(slot._item, slot._item.icon, slot.Amount);
+
+            _requirements.Add(_inventorySlot);
         }
     }
 
@@ -35,8 +39,42 @@ public class UnlockPoint : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (!_unlokingSegment) return;
+
+        if (other.TryGetComponent(out Player player))
+        {
+            if (CanUnlock())
+            {
+                UnlockSegment();
+            } else
+            {
+                foreach (RequireditemView slot in _requirements)
+                {
+                    if (slot.Value > 0)
+                    {
+                        var playerInventory = _player.Inventory;
+                        int haveCount = playerInventory.GetItemAmount(slot.Item.type);
+                        Debug.Log($"playr has {haveCount} items");
+                        if (haveCount > 0)
+                        {
+                            playerInventory.ChangeItemAmount(slot.Item.type, -1);
+                            slot.ChangeValue(-1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public bool CanUnlock()
     {
+        foreach (RequireditemView slot in _requirements)
+        {
+            Debug.Log($"required {slot.Value}");
+            if (slot.Value > 0) return false;
+        }
         return true;
     }
 
@@ -51,8 +89,8 @@ public class UnlockPoint : MonoBehaviour
         if (_player != null)
         {
             Quaternion rawRoation = Quaternion.Slerp(_canvas.transform.rotation,
-                                                                 Quaternion.LookRotation(_canvas.transform.position - _player.transform.position),
-                                                                 2 * Time.deltaTime);
+                                                     Quaternion.LookRotation(_canvas.transform.position - _player.transform.position),
+                                                     2 * Time.deltaTime);
             _canvas.transform.rotation = new Quaternion(0, rawRoation.y, 0, rawRoation.w);
         }
     }

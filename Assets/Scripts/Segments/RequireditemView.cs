@@ -8,11 +8,18 @@ public class RequireditemView : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private Text _amountText;
 
+    private Item _item;
+    public Item Item => _item;
+
     private int _value = 0;
 
-    public void Init(Sprite icon, int amount)
+    public int Value => _value;
+
+    public void Init(Item item, Sprite icon, int amount)
     {
+        _item = item;
         _image.sprite = icon;
+        _value = 0;
         ChangeValue(amount);
     }
 

@@ -4,12 +4,13 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField]
-    private GridLayoutGroup _container;
+    [SerializeField] private GridLayoutGroup _container;
     [SerializeField] private InventorySlot _slotPrefab;
 
     [SerializeField] private List<Item> _items = new();
     [SerializeField] private List<InventorySlot> _slots = new();
+
+    public List<Item> Items => _items;
 
     private void Awake()
     {
@@ -31,5 +32,17 @@ public class Inventory : MonoBehaviour
                 _slots[i].RefreshSlot();
             }
         }
+    }
+
+    public int GetItemAmount(ItemType type)
+    {
+        for (int i = 0; i < _items.Count; i++)
+        {
+            if (_items[i].type == type)
+            {
+                return _slots[i].Amount;
+            }
+        }
+        return 0;
     }
 }
