@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c2c19a185237f4aa59f319efdcaa0d, type: 3}
+  m_Name: Zombie
+  m_EditorClassIdentifier: 
+  _stage1: {fileID: 9146325050280567140, guid: eef36edaccf67af4282d572ea398eb9a, type: 3}
+  _stage2: {fileID: 9146325050280567140, guid: eef36edaccf67af4282d572ea398eb9a, type: 3}
+  _stage3: {fileID: 9146325050280567140, guid: eef36edaccf67af4282d572ea398eb9a, type: 3}
+  _stage4: {fileID: 9146325050280567140, guid: eef36edaccf67af4282d572ea398eb9a, type: 3}
+  MaxValue: 3
+  _item: {fileID: 11400000, guid: 0bc806d6e4e71994e92f58a88a55993c, type: 2}

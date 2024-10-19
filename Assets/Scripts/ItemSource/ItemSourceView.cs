@@ -9,10 +9,12 @@ public class ItemSourceView : MonoBehaviour
     [SerializeField] private Item _resource;
     [SerializeField] private float _maxRespawnTimeout = 5f;
     [SerializeField] private float _respawnTimeout;
+    [SerializeField] private bool _hideWhenZero;
     
     private GameObject _stage1, _stage2, _stage3, _stage4;
 
     public Item Resource => _resource;
+    public int Value => _value;
 
 
     private void Awake()
@@ -26,6 +28,7 @@ public class ItemSourceView : MonoBehaviour
         _stage2.SetActive(false);
         _stage3.SetActive(false);
         _stage4.SetActive(false);
+
 
         _value = _data.MaxValue;
         _respawnTimeout = 0f;
@@ -41,13 +44,13 @@ public class ItemSourceView : MonoBehaviour
             _object = _stage4;
             _respawnTimeout = _maxRespawnTimeout;
         }
-
+        
         _stage1.SetActive(false);
         _stage2.SetActive(false);
         _stage3.SetActive(false);
         _stage4.SetActive(false);
-        _object.SetActive(true);
-
+        _object.SetActive(!(_value == 0 && _hideWhenZero));
+        
         if (_respawnTimeout > 0f)
         {
             _respawnTimeout -= Time.deltaTime;
@@ -57,6 +60,7 @@ public class ItemSourceView : MonoBehaviour
         if (_respawnTimeout == 0f && _value == 0)
         {
             _value = _data.MaxValue;
+            _object.SetActive(true);
         }
     }
 
