@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c2c19a185237f4aa59f319efdcaa0d, type: 3}
   m_Name: Tree
   m_EditorClassIdentifier: 
-  _stage1: {fileID: 4645539761065304347, guid: e9bed69f3fe97be4dba23e4ea9308a91, type: 3}
-  _stage2: {fileID: 4645539761065304347, guid: 07cd43335b0a99443a8fc75c5c3f05a1, type: 3}
-  _stage3: {fileID: 4645539761065304347, guid: 2e6aaac94b5f9cd4a8051b9323e0eb61, type: 3}
-  _stage4: {fileID: 4645539761065304347, guid: a93e01f5752832248a8f012fde36a06c, type: 3}
+  _stage1: {fileID: 3098137301060449361, guid: f6e3d5ace3eef9b4f8826b5ce99bfe98, type: 3}
+  _stage2: {fileID: 5806495540091758755, guid: e93793e40c8fc9f4d8a9c82127a00142, type: 3}
+  _stage3: {fileID: 2832715220926543641, guid: beff16cfcdff93041834835d722dc414, type: 3}
+  _stage4: {fileID: 2831570264279244947, guid: 228b9638c677c374c99540c71ff126e5, type: 3}
   MaxValue: 10
   _item: {fileID: 11400000, guid: 0bc806d6e4e71994e92f58a88a55993c, type: 2}
