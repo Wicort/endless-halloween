@@ -19,16 +19,27 @@ public class ItemSourceView : MonoBehaviour
 
     private void Awake()
     {
-        if (_stage1 == null) _stage1 = Instantiate(_data._stage1, transform);
-        if (_stage2 == null) _stage2 = Instantiate(_data._stage2, transform);
-        if (_stage3 == null) _stage3 = Instantiate(_data._stage3, transform);
-        if (_stage4 == null) _stage4 = Instantiate(_data._stage4, transform);
+        if (_stage1 == null && _data._stage1 != null)
+        {
+            _stage1 = Instantiate(_data._stage1, transform);
+            _stage1.SetActive(false);
+        }
+        if (_stage2 == null && _data._stage2 != null)
+        {
+            _stage2 = Instantiate(_data._stage2, transform);
+            _stage2.SetActive(false);
+        }
+        if (_stage3 == null && _data._stage3 != null)
+        {
+            _stage3 = Instantiate(_data._stage3, transform);
+            _stage3.SetActive(false);
+        }
 
-        _stage1.SetActive(false);
-        _stage2.SetActive(false);
-        _stage3.SetActive(false);
-        _stage4.SetActive(false);
-
+        if (_stage4 == null && _data._stage4 != null)
+        {
+            _stage4 = Instantiate(_data._stage4, transform);
+            _stage4.SetActive(false);
+        }
 
         _value = _data.MaxValue;
         _respawnTimeout = 0f;
@@ -36,19 +47,20 @@ public class ItemSourceView : MonoBehaviour
 
     private void Update()
     {
-        if (_value > _data.MaxValue / 3f * 2) _object = _stage1;
-        else if (_value >= _data.MaxValue / 3f) _object = _stage2;
-        else if (_value > 0f) _object = _stage3;
+        if (_value > _data.MaxValue / 3f * 2 && _stage1) _object = _stage1;
+        else if (_value >= _data.MaxValue / 3f && _stage2) _object = _stage2;
+        else if (_value > 0f && _stage3) _object = _stage3;
         else if (_value <= 0 && _respawnTimeout == 0f)
         {
-            _object = _stage4;
+            if (_stage4) _object = _stage4;
             _respawnTimeout = _maxRespawnTimeout;
         }
-        
-        _stage1.SetActive(false);
-        _stage2.SetActive(false);
-        _stage3.SetActive(false);
-        _stage4.SetActive(false);
+
+        if (_stage1 != null) _stage1.SetActive(false);
+        if (_stage2 != null) _stage2.SetActive(false);
+        if (_stage3 != null) _stage3.SetActive(false);
+        if (_stage4 != null) _stage4.SetActive(false);
+
         _object.SetActive(!(_value == 0 && _hideWhenZero));
         
         if (_respawnTimeout > 0f)

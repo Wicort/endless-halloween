@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     public Inventory Inventory => _inventory;
 
-    private float _attackTimeout;
+    private float _attackTimeout = 0f;
 
     private void Update()
     {
