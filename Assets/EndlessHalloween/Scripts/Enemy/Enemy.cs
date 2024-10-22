@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
         Collider[] _hitColliders = Physics.OverlapSphere(transform.position, _radius, LayerMask.GetMask("Player"));
         foreach (Collider hit in _hitColliders)
         {
-            Debug.Log("Argh!!");
             var _player = hit.GetComponent<Player>();
             Quaternion rawRoation = Quaternion.Slerp(transform.rotation,
                                                      Quaternion.LookRotation(_player.transform.position - transform.position),

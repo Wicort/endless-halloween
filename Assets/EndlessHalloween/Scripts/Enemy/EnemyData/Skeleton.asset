@@ -16,5 +16,5 @@ MonoBehaviour:
   _stage2: {fileID: 0}
   _stage3: {fileID: 0}
   _stage4: {fileID: 0}
-  MaxValue: 100
+  MaxValue: 10
   _item: {fileID: 11400000, guid: 0bc806d6e4e71994e92f58a88a55993c, type: 2}

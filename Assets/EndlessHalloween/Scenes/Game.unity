@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4137,7 +4137,6 @@ GameObject:
   - component: {fileID: 1475699831}
   - component: {fileID: 1475699830}
   - component: {fileID: 1475699829}
-  - component: {fileID: 1475699828}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -4154,36 +4153,13 @@ Transform:
   m_GameObject: {fileID: 1475699826}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.13, z: 0}
+  m_LocalPosition: {x: -2.42, y: 0.13, z: 0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8724219336955695426}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1475699828
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475699826}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2.02
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &1475699829
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4252,6 +4228,9 @@ MonoBehaviour:
   _characterController: {fileID: 1475699830}
   _pursuingSpeed: 1
   _animator: {fileID: 8724219336955695427}
+  _maxAttackTimeout: 2.19
+  _attackDistance: 1.1
+  _target: {fileID: 0}
 --- !u!114 &1475699832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4280,7 +4259,7 @@ MonoBehaviour:
   _data: {fileID: 11400000, guid: 91a8fe9bde06e354bb97ff759034c9c7, type: 2}
   _object: {fileID: 8239748861688990712}
   _value: 3
-  _resource: {fileID: 11400000, guid: fdee2bbf09f0ff840ae4c86ae0bfeb27, type: 2}
+  _resource: {fileID: 11400000, guid: 0bc806d6e4e71994e92f58a88a55993c, type: 2}
   _maxRespawnTimeout: 10
   _respawnTimeout: 0
   _hideWhenZero: 1
@@ -6095,8 +6074,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 1
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 10}
+  m_CellSize: {x: 100, y: 80}
+  m_Spacing: {x: 0, y: 5}
   m_Constraint: 1
   m_ConstraintCount: 1
 --- !u!20 &3545797074131848742 stripped

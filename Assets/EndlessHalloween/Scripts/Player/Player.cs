@@ -23,15 +23,17 @@ public class Player : MonoBehaviour
                 if (hit.TryGetComponent(out ItemSourceView source))
                 {
                     int damage = 1;
-                    
-                    damage = source.GetDamage(damage, transform);
-                    _attackTimeout = _attackMaxTimeout;
-                    if (damage > 0)
-                    {
-                        _animator.SetBool("IsAttack", true);
-                        _inventory.ChangeItemAmount(source.Resource.type, damage);
-                    }
 
+                    if (source != null)
+                    {
+                        damage = source.GetDamage(damage, transform);
+                        _attackTimeout = _attackMaxTimeout;
+                        if (damage > 0)
+                        {
+                            _animator.SetBool("IsAttack", true);
+                            _inventory.ChangeItemAmount(source.Resource.type, damage);
+                        }
+                    }
                     
                 }
             }

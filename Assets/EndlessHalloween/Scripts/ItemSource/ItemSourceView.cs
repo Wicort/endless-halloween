@@ -86,7 +86,7 @@ public class ItemSourceView : MonoBehaviour
             effectTransform = transform;
         }
 
-        if (damage >= _value)
+        if (damage > _value)
         {
             damage = _value;
             _value = 0;
