@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c2c19a185237f4aa59f319efdcaa0d, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  _stage1: {fileID: 7477501143625386712, guid: c5d8a6062a2b0a74ab40b183c5ba5e07, type: 3}
-  _stage2: {fileID: 7477501143625386712, guid: 05633c01ebd458342b433aa71b853a0a, type: 3}
-  _stage3: {fileID: 7477501143625386712, guid: 1a7db97c0d54eac429c45f5bacf7741c, type: 3}
-  _stage4: {fileID: 7477501143625386712, guid: f1849ebd0b54eac498f899d16b86d05b, type: 3}
+  _stage1: {fileID: 7908062465481812569, guid: 85c77e5df91c3784599b36f7738ad165, type: 3}
+  _stage2: {fileID: 5819163993080605285, guid: 82901039dbc163445a915d5e9c7ed4a8, type: 3}
+  _stage3: {fileID: 2395613562747824143, guid: bad31ff653b620645b908893f1561bf0, type: 3}
+  _stage4: {fileID: 4019316338680516392, guid: 6fd9735e5d54f6641bcfccc351a9a0a7, type: 3}
   MaxValue: 10
   _item: {fileID: 11400000, guid: 62c4c5c6d121e774aba2de9cca3c4891, type: 2}
