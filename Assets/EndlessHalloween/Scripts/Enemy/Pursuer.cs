@@ -20,28 +20,28 @@ public class Pursuer : MonoBehaviour
     {
         _self = gameObject.GetComponent<Enemy>();
         _sourceView = gameObject.GetComponent<ItemSourceView>();
-        _attackTimeout = 0;
+        _attackTimeout = 0f;
     }
 
     private void Update()
     {
-        if (_attackTimeout > 0)
+        if (_attackTimeout > 0f)
         {
             _attackTimeout -= Time.deltaTime;
         }
-        if (_attackTimeout <= 0)
+        if (_attackTimeout <= 0f)
         {
-            _attackTimeout = 0;
+            _attackTimeout = 0f;
             _target = null;
         }
 
         if (_animator != null)
         {
             _animator.SetBool("IsRun", false);
-            if (_attackTimeout == 0) _animator.SetBool("IsAttack", false);
+            if (_attackTimeout == 0f) _animator.SetBool("IsAttack", false);
         }
 
-        if (_sourceView.Value == 0) return;
+        if (_sourceView.Value == 0f) return;
 
         Collider[] _hitColliders = Physics.OverlapSphere(transform.position, _self._radius, LayerMask.GetMask("Player"));
         foreach (Collider hit in _hitColliders)
@@ -50,7 +50,7 @@ public class Pursuer : MonoBehaviour
             
             float distance = Vector3.Distance(transform.position, hit.transform.position);
          
-            if (distance <= _attackDistance && _attackTimeout == 0)
+            if (distance <= _attackDistance && _attackTimeout == 0f)
             {
                 if (_animator != null) _animator.SetBool("IsAttack", true);
                 _attackTimeout = _maxAttackTimeout;
@@ -59,7 +59,7 @@ public class Pursuer : MonoBehaviour
             }
             else
             {
-                if (_animator != null && _attackTimeout == 0)
+                if (_animator != null && _attackTimeout == 0f)
                 {
                     Vector3 moveDirection = transform.forward * _pursuingSpeed * Time.deltaTime;
                     _characterController.Move(moveDirection);
@@ -71,7 +71,7 @@ public class Pursuer : MonoBehaviour
 
     private IEnumerator doDamage()
     {
-        yield return new WaitForSeconds(_maxAttackTimeout / 2);
+        yield return new WaitForSeconds(_maxAttackTimeout / 2f);
 
         if (_target != null)
         {

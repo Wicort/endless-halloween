@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemSourceView : MonoBehaviour
@@ -54,6 +55,12 @@ public class ItemSourceView : MonoBehaviour
         {
             if (_stage4) _object = _stage4;
             _respawnTimeout = _maxRespawnTimeout;
+
+            Animator animator = _object.GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.SetTrigger("Dead");
+            }
         }
 
         if (_stage1 != null) _stage1.SetActive(false);
@@ -61,7 +68,8 @@ public class ItemSourceView : MonoBehaviour
         if (_stage3 != null) _stage3.SetActive(false);
         if (_stage4 != null) _stage4.SetActive(false);
 
-        _object.SetActive(!(_value == 0 && _hideWhenZero));
+        //_object.SetActive(!(_value == 0 && _hideWhenZero));
+        StartCoroutine(Dead());
         
         if (_respawnTimeout > 0f)
         {
@@ -74,6 +82,12 @@ public class ItemSourceView : MonoBehaviour
             _value = _data.MaxValue;
             _object.SetActive(true);
         }
+    }
+
+    private System.Collections.IEnumerator Dead()
+    {
+        yield return new WaitForSeconds(1f);
+        _object.SetActive(!(_value == 0 && _hideWhenZero));
     }
 
     public int GetDamage(int damage, Transform effectTransform)
