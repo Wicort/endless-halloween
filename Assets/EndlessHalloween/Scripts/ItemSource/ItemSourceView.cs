@@ -68,8 +68,7 @@ public class ItemSourceView : MonoBehaviour
         if (_stage3 != null) _stage3.SetActive(false);
         if (_stage4 != null) _stage4.SetActive(false);
 
-        //_object.SetActive(!(_value == 0 && _hideWhenZero));
-        StartCoroutine(Dead());
+        _object.SetActive(!(_value == 0 && _hideWhenZero));
         
         if (_respawnTimeout > 0f)
         {
@@ -84,11 +83,7 @@ public class ItemSourceView : MonoBehaviour
         }
     }
 
-    private System.Collections.IEnumerator Dead()
-    {
-        yield return new WaitForSeconds(1f);
-        _object.SetActive(!(_value == 0 && _hideWhenZero));
-    }
+
 
     public int GetDamage(int damage, Transform effectTransform)
     {
