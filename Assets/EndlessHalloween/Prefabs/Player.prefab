@@ -1799,9 +1799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d527cdfecc2d05e4ca79f5e9324927f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackMaxTimeout: 1
   _inventory: {fileID: 0}
-  _animator: {fileID: 6326265036655105662}
 --- !u!114 &545589348154531628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1816,9 +1814,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraPosition: {fileID: 4656910451011623398}
   mouseSensivity: 2
-  playerSpeed: 3
+  attackSpeed: 1
+  movementSpeed: 3
   jumpHeight: 2
   animator: {fileID: 6326265036655105662}
+  attackMaxTimeout: 1
+  Inventory: {fileID: 0}
+  attackTimeout: 0
 --- !u!1 &8487521552207774075
 GameObject:
   m_ObjectHideFlags: 0
