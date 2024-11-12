@@ -88,6 +88,18 @@ public class UnlockPoint : MonoBehaviour
     {
         if (_player != null)
         {
+            float distance = Vector3.Distance(_player.transform.position, transform.position);
+            if (distance <= 5)
+            {
+                _canvas.gameObject.SetActive(true);
+            }
+            else
+            {
+                _canvas.gameObject.SetActive(false);
+            }
+
+            if (!_canvas.gameObject.activeInHierarchy) return;
+
             Quaternion rawRoation = Quaternion.Slerp(_canvas.transform.rotation,
                                                      Quaternion.LookRotation(_canvas.transform.position - _player.transform.position),
                                                      2 * Time.deltaTime);
