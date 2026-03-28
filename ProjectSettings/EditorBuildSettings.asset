@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/EndlessHalloween/Scenes/Initial.unity
+    guid: 8c3dacb06a8209b4e8bcdd1b3f59a6dc
+  - enabled: 1
+    path: Assets/EndlessHalloween/Scenes/Welcome.unity
+    guid: 5872d319d97a02d40807f5b67946554e
+  - enabled: 1
+    path: Assets/EndlessHalloween/Scenes/Game.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
